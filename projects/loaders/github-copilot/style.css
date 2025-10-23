@@ -1,0 +1,78 @@
+:root {
+    --loader-color: #2ea44f;
+    --loader-size: 80px;
+    --animation-duration: 1.5s;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d1117;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.loader-container {
+    text-align: center;
+}
+
+.pulse-loader {
+    position: relative;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    margin: 0 auto 20px;
+}
+
+.pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid var(--loader-color);
+    opacity: 0;
+    animation: pulse var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.pulse-2 {
+    animation-delay: calc(var(--animation-duration) / 3);
+}
+
+.pulse-3 {
+    animation-delay: calc((var(--animation-duration) / 3) * 2);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.loader-text {
+    color: #c9d1d9;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root {
+        --loader-size: 60px;
+    }
+    
+    .loader-text {
+        font-size: 14px;
+    }
+}
